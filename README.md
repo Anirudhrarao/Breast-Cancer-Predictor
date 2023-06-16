@@ -1,3 +1,3 @@
 # Breast Cancer Prediction
 
-- Working on project coming soon
+- Documentation is on the way keep tunning with me
