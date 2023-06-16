@@ -11,6 +11,9 @@ from sklearn.metrics import (accuracy_score,
 
 
 def save_object(file_path,obj):
+    '''
+        Desc: This function will responsible for saving our model and preprocessor in pickle
+    '''
     try:
         dir_path = os.path.dirname(file_path)
         os.makedirs(dir_path,exist_ok=True)
@@ -36,5 +39,17 @@ def evaluate_model(X_train,y_train,X_test,y_test,models):
             report[list(models.values())[i]] = test_model_accuracy
         return report
     
+    except Exception as e:
+        raise CustomException(e,sys)
+
+
+def load_object(file_path):
+    '''
+        Desc: This function will read or load our pickled file
+    '''
+    try:
+        with open(file_path,'rb') as file_obj:
+            return pickle.load(file_obj)
+        
     except Exception as e:
         raise CustomException(e,sys)

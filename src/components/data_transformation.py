@@ -30,15 +30,23 @@ class DataTransformation:
         try:
             logging.info('Data transformation started')
             df = pd.read_csv(os.path.join("artifact/data_ingestion","raw.csv"))
-            numerical_columns = ['mean radius','mean texture','mean perimeter',
-                                'mean area','mean smoothness','mean compactness','mean concavity',
-                                'mean concave points','mean symmetry','mean fractal dimension',
-                                'radius error','texture error','perimeter error','area error',
-                                'smoothness error','compactness error','concavity error',
-                                'concave points error','symmetry error','fractal dimension error','worst radius',
-                                'worst texture','worst perimeter','worst area',
-                                'worst smoothness','worst compactness','worst concavity','worst concave points','worst symmetry',
-                                'worst fractal dimension']
+            numerical_columns = ['mean_radius',
+                                'mean_texture',
+                                'mean_smoothness',
+                                'mean_compactness',
+                                'mean_symmetry',
+                                'mean_fractal_dimension',
+                                'radius_error',
+                                'texture_error',
+                                'smoothness_error',
+                                'compactness_error',
+                                'concavity_error',
+                                'concave_points_error',
+                                'symmetry_error',
+                                'fractal_dimension_error',
+                                'worst_smoothness',
+                                'worst_symmetry',
+                                'worst_fractal_dimension']
             
             numerical_pipeline = Pipeline(
                 steps=[
@@ -84,16 +92,23 @@ class DataTransformation:
         try:
             train_data = pd.read_csv(train_path)
             test_data  = pd.read_csv(test_path) 
-            numerical_columns = ['mean radius','mean texture','mean perimeter',
-                                'mean area','mean smoothness','mean compactness','mean concavity',
-                                'mean concave points','mean symmetry','mean fractal dimension',
-                                'radius error','texture error','perimeter error','area error',
-                                'smoothness error','compactness error','concavity error',
-                                'concave points error','symmetry error','fractal dimension error','worst radius',
-                                'worst texture','worst perimeter','worst area',
-                                'worst smoothness','worst compactness','worst concavity','worst concave points','worst symmetry',
-                                'worst fractal dimension']
-            
+            numerical_columns = ['mean_radius',
+                                'mean_texture',
+                                'mean_smoothness',
+                                'mean_compactness',
+                                'mean_symmetry',
+                                'mean_fractal_dimension',
+                                'radius_error',
+                                'texture_error',
+                                'smoothness_error',
+                                'compactness_error',
+                                'concavity_error',
+                                'concave_points_error',
+                                'symmetry_error',
+                                'fractal_dimension_error',
+                                'worst_smoothness',
+                                'worst_symmetry',
+                                'worst_fractal_dimension']
             logging.info(f"Removing outlier from train data")
             for col in numerical_columns:
                 self.remove_outliers_IQR(col=col,df=train_data)

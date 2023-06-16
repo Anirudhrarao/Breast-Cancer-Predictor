@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Breast Cancer Prediction</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 30px;
+      background-color: #f8f9fa;
+    }
+    .form-label {
+      font-weight: bold;
+    }
+    .form-control {
+      background-color: #fff;
+    }
+    .submit-btn {
+      margin-top: 20px;
+    }
+    .custom-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+    }
+    .form-heading {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #343a40;
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .image-section {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .result {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 18px;
+      color: #343a40;
+      animation: color-change 3s ease-in-out infinite;
+      font-size: 20px;
+    }
+  
+    @keyframes color-change {
+      0% {
+        color: #343a40;
+      }
+      50% {
+        color: #ff0000; /* Change to desired color */
+      }
+      100% {
+        color: #343a40;
+      }
+    }
+    .circular-heading {
+      display: inline-block;
+      padding: 10px;
+      border-radius: 50%;
+      background-color: #343a40;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="custom-form">
+      <h1 class="form-heading">Breast Cancer Prediction</h1>
+      <div class="image-section">
+        <img src="https://4basecare.com/content/uploads/2021/08/New-Approch-in-Prediction-and-Screesning-Of-Breast-Cancer-NGS.png" style="width: 100px;" alt="Image">
+      </div>
+      <div class="row">
+        <div class="col-sm-12 result mb-2">
+          <strong>{{result|upper}}</strong>
+        </div>
+      </div>
+      <form action="{{url_for('predictor')}}" method="POST">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group row">
+              <label class="col-sm-6 col-form-label form-label" for="mean_radius">Mean Radius:</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="mean_radius"  required>
+              </div>
+            </div>
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="mean_texture">Mean Texture:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="mean_texture"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="mean_smoothness">Mean Smoothness:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="mean_smoothness"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="mean_compactness">Mean Compactness:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="mean_compactness"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="mean_symmetry">Mean Symmetry:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="mean_symmetry"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="mean_fractal_dimension">Mean Fractal Dimension:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="mean_fractal_dimension"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="radius_error">Radius Error:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="radius_error"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="texture_error">Texture Error:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="texture_error"  required>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="smoothness_error">Smoothness Error:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="smoothness_error"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="compactness_error">Compactness Error:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="compactness_error"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="concavity_error">Concavity Error:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="concavity_error"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="concave_points_error">Concave Points Error:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="concave_points_error"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="symmetry_error">Symmetry Error:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="symmetry_error"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="fractal_dimension_error">Fractal Dimension Error:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="fractal_dimension_error"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="worst_smoothness">Worst Smoothness:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="worst_smoothness"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="worst_symmetry">Worst Symmetry:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="worst_symmetry"  required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-6 col-form-label form-label" for="worst_fractal_dimension">Worst Fractal Dimension:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="worst_fractal_dimension"  required>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="submit" class="p-2 btn btn-primary btn-block font-weight-bold submit-btn">Submit</button>
+      </div>
+    </div>
+    
+  </form>
+</div>  
