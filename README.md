@@ -70,8 +70,10 @@ Start the server
 
 
 ## Screenshots of project
-
+##### Screenshot 1:
 ![App Screenshot](https://raw.githubusercontent.com/Anirudhrarao/Breast-Cancer-Predictor/main/screenshot/cancer1.png)
+##### Screenshot 2:
+![App Screenshot](https://raw.githubusercontent.com/Anirudhrarao/Breast-Cancer-Predictor/main/screenshot/cancer2.png)
 
 ## Authors
 
