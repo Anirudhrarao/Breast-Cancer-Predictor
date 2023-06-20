@@ -71,7 +71,7 @@ Start the server
 
 ## Screenshots of project
 
-![App Screenshot]()
+![App Screenshot](https://raw.githubusercontent.com/Anirudhrarao/Breast-Cancer-Predictor/main/screenshot/cancer1.png)
 
 ## Authors
 
