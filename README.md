@@ -1,4 +1,4 @@
-# Student Performance Indicator
+# Breast cancer prediction
 
 #### Problem statement
 This project focuses on predicting whether a breast tumor is benign (non-cancerous) or malignant (cancerous) based on various features extracted from medical images.
